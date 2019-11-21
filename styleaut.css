@@ -1,0 +1,61 @@
+   body {
+         background: url(coffee.jpg); 
+        }
+   p {
+      font-family: georgia;
+     }
+   .header {
+	    font-size: 160%;
+	    color: #F8ECE0;
+            width: 80%;
+	    height: 17%;
+            margin-left: 10%;
+            margin-right: 10%;
+	    display: inline-block;
+           }
+   .main {
+	  background: #F6E3CE;
+          color: #8A4B08;
+	  width: 80%;
+	  height: 65%;
+          margin-top: 1%;
+          margin-left: 10%;
+          margin-right: 10%;
+	  display: inline-block;
+         }
+   .menu {
+	  background: brown;
+	  color: white;
+	  width: 80%;
+	  height: 8%;
+          margin-left: 10%;
+          margin-right: 10%;
+	  display: inline-block;
+         }
+   .footer {
+	    background: #F6E3CE;
+            color: #D8D8D8;
+	    width: 80%;
+	    height: 10%;
+            margin-left: 10%;
+            margin-right: 10%;
+	    display: inline;
+           }
+   a:link { 
+           text-decoration: none; 
+           color: white;
+          } 
+   a:visited 
+            { 
+             text-decoration: none; 
+             color: white;  
+            } 
+   a:active 
+            { 
+             text-decoration: none; 
+            }
+   a:hover 
+          {
+           text-decoration: underline; 
+           color: black; 
+          }
