@@ -32,26 +32,15 @@
           margin-bottom: 1%;
 	  display: inline-block;
          }
-   .coffee1 {
+   .coffee {
 	     background: #F6E3CE;
-             color: #8A4B08;
-	     width: 39%;
+         color: #8A4B08;
+	     width: 79%;
 	     height: 18%;
-             margin-top: 0%;
-             margin-left: 10%;
-             margin-right: 0%;
-             margin-bottom: 1%;
-	     display: inline-block;
-            }
-   .coffee2 {
-	     background: #F6E3CE;
-             color: #8A4B08;
-	     width: 39%;
-	     height: 18%;
-             margin-top: 0%;
-             margin-left: 0%;
-             margin-right: 10%;
-             margin-bottom: 1%;
+         margin-top: 0%;
+         margin-left: 10%;
+         margin-right: 10%;
+         margin-bottom: 0%;
 	     display: inline-block;
             }
    .footer {

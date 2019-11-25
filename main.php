@@ -17,7 +17,7 @@
    <p><a href="aut.php" style="color:#81BEF7;">Войдите</a> или <a href="reg.php" style="color:#81BEF7;">зарегистрируйтесь</a>, чтобы получить доступ к заказам и скидкам!</p>
    <?php else: ?>
     <p> Приветствуем Вас, <?=$_COOKIE['user']?>. Чтобы выйти, нажмите <a href="exit.php">здесь</a>.</p>
-   <?php endif; ?>
+   <?php endif; ?>         
   </div>
   <div class="menu" align=center>
    <p> <a href="contact.php" style="padding: 10px 5% 10px;">Контакты/Адрес</a>

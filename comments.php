@@ -10,7 +10,14 @@
    <h1><em> Cofeйня </em></h1>
   </div>
   <div class="register">
+    <?php 
+   error_reporting(0);
+   if($_COOKIE['user'] == ''):
+     ?>
    <p><a href="aut.php" style="color:#81BEF7;">Войдите</a> или <a href="reg.php" style="color:#81BEF7;">зарегистрируйтесь</a>, чтобы получить доступ к заказам и скидкам!</p>
+   <?php else: ?>
+    <p> Приветствуем Вас, <?=$_COOKIE['user']?>. Чтобы выйти, нажмите <a href="exit.php">здесь</a>.</p>
+   <?php endif; ?>
   </div>
   <div class="menu">
    <p align=center> <a href="contact.php" style="padding: 10px 5% 10px 0%;">Контакты/Адрес</a>

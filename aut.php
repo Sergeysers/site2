@@ -14,8 +14,8 @@
   </div>
   <div class="main" style="text-align:center">
    <form action="checkaut.php" method="post">
-    <p>Ваша почта: <input type="email" name="email"><br></p>
-    <p>Ваш пароль: <input type="password" name="password"><br></p>
+    <p>Ваша почта: <input type="email" name="email" required><br></p>
+    <p>Ваш пароль: <input type="password" name="password" required><br></p>
     <input type="submit" name="submit">
    </form>
    <p> Еще не зарегистрированы? <a href="reg.php" style="color:#81BEF7;"> Зарегистрироваться </a></p>
