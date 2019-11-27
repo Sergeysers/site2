@@ -14,10 +14,10 @@
    error_reporting(0);
    if($_COOKIE['user'] == ''):
      ?>
-   <p><a href="aut.php" style="color:#81BEF7;">Войдите</a> или <a href="reg.php" style="color:#81BEF7;">зарегистрируйтесь</a>, чтобы получить доступ к заказам и скидкам!</p>
+   <p><a href="aut.php" style="color:#81BEF7;">Войдите</a> или <a href="reg.php" style="color:#81BEF7;">зарегистрируйтесь</a>, чтобы получить доступ к заказам, каталогу, отзывам и скидкам!</p>
+   <p align=center> <a href="main.php">Вернуться на главную страницу</a></p>
    <?php else: ?>
     <p> Приветствуем Вас, <?=$_COOKIE['user']?>. Чтобы выйти, нажмите <a href="exit.php">здесь</a>.</p>
-   <?php endif; ?>
   </div>
   <div class="menu">
    <p align=center> <a href="contact.php" style="padding: 10px 5% 10px;">Контакты/Адрес</a>
@@ -29,9 +29,9 @@
   </div>
   <div class="main" style="text-align:center">
    <p> При заказе с сайта все виды кофе стоят 70/110/150 рублей за 250/350/450 мл соответственно! </p>
-   <form action="" method="POST">
+   <form action="shopform.php" method="POST">
     <p>Напиток: 
-     <select name="drink[]" size="1">
+     <select name="drink" size="1">
       <option value="Капучино">Капучино</option>
       <option value="Латте">Латте</option>
       <option value="Флэт уайт">Флэт уайт</option>
@@ -42,13 +42,13 @@
       <option value="Моккачино">Моккачино</option>
      </select></p>
     <p>Размер стаканчика: 
-     <select name="size[]" size="1">
+     <select name="size" size="1">
       <option value="250ml">Маленький(250мл)</option>
       <option value="350ml">Средний(350мл)</option>
       <option value="450ml">Большой(450мл)</option>
      </select></p>
     <p>Количество: 
-     <select name="count[]" size="1">
+     <select name="count" size="1">
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -63,5 +63,6 @@
   <div class="footer"  align=center>
    <p> © Разработано на ИУ4-11Б Еловским Никитой </p>
   </div>
+  <?php endif; ?>
  </body>
 </html>

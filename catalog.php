@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
  <head>
@@ -14,10 +15,10 @@
    error_reporting(0);
    if($_COOKIE['user'] == ''):
      ?>
-   <p><a href="aut.php" style="color:#81BEF7;">Войдите</a> или <a href="reg.php" style="color:#81BEF7;">зарегистрируйтесь</a>, чтобы получить доступ к заказам и скидкам!</p>
+   <p><a href="aut.php" style="color:#81BEF7;">Войдите</a> или <a href="reg.php" style="color:#81BEF7;">зарегистрируйтесь</a>, чтобы получить доступ к заказам, каталогу, отзывам и скидкам!</p>
+   <p align=center> <a href="main.php">Вернуться на главную страницу</a></p>
    <?php else: ?>
     <p> Приветствуем Вас, <?=$_COOKIE['user']?>. Чтобы выйти, нажмите <a href="exit.php">здесь</a>.</p>
-   <?php endif; ?>
   </div>
   <div class="menu">
    <p align=center> <a href="contact.php" style="padding: 10px 5% 10px;">Контакты/Адрес</a>
@@ -27,126 +28,65 @@
 	                <a href="shop.php" style="padding: 10px 5% 10px 10%;">Купить</a>
 				    <a href="comments.php" style="padding: 10px 5% 10px;">Отзывы</a></p>
   </div>
-  <div class="coffee" align=center>
-     <form action="" method="POST" align=right>
-      <p>Сортировка: 
-	 <select name="sort" size="1">
-      <option value="Тип">Тип</option>
-      <option value="Производитель">Производитель</option>
-	  <option value="Цена">Цена</option>
-	  <option value="Оценка">Оценка</option>
-     </select></p>
-	     <input type="submit" value="Подтвердить">
-   </form> 
-  <?php
+  <div class="coffee">
+    <?php
+  $type = filter_var(trim($_POST['type']),
+  FILTER_SANITIZE_STRING);
+  $namepr = filter_var(trim($_POST['namepr']),
+  FILTER_SANITIZE_STRING);
+  $descr = filter_var(trim($_POST['descr']),
+  FILTER_SANITIZE_STRING);
+  $gen = filter_var(trim($_POST['gen']),
+  FILTER_SANITIZE_STRING);
+  $cost250 = filter_var(trim($_POST['cost250']),
+  FILTER_SANITIZE_STRING);
+  $cost350 = filter_var(trim($_POST['cost350']),
+  FILTER_SANITIZE_STRING);
+  $cost450 = filter_var(trim($_POST['cost450']),
+  FILTER_SANITIZE_STRING);
+  $photo = filter_var(trim($_POST['photo']),
+  FILTER_SANITIZE_STRING);
+  $stat = filter_var(trim($_POST['sort']),
+  FILTER_SANITIZE_STRING);
   
-    $sort = filter_var(trim($_POST['sort']),
-    FILTER_SANITIZE_STRING);
-    $mysql = new mysqli('localhost','root','','registersite');
+$mysql = new mysqli('localhost','root','','registersite');
+$query ="SELECT `photo`,`namepr`,`type`,`gen`,`descr`,`cost250`,`cost350`,`cost450` FROM `catalog`";
+ 
+$result = mysqli_query($mysql, $query); 
+if($result)
+ $rows = "";
+    while($rows = $result->fetch_assoc()){
+		echo "<link rel='stylesheet' href='table.css'>";
+		echo "<table>";
+		echo "<tr><td rowspan=6>";
+		echo "<img src=\"data:image/png;base64,".base64_encode($rows["photo"])."\" />";
+		echo "</td>";
+		echo "<td><b>".$rows["namepr"]."</b></td>";
+		echo "</tr>";
+        echo "<tr><td colspan=3>".$rows["type"]."</td></tr>";
+        echo "<tr><td colspan=3> Производство: ".$rows["gen"]."</td></tr>";  
+        echo "<tr><td colspan=3>".$rows["descr"]."</td></tr>"; 
+ 		echo "<tr>";
+        echo "<td> Цена (250мл): ".$rows["cost250"]."</td>"; 
+        echo "<td> Цена (350мл): ".$rows["cost350"]."</td>";
+        echo "<td> Цена (450мл): ".$rows["cost450"]."</td>";
+		echo "</tr>"; 
+        echo "</table>";				
+	}
 
-    if ($sort == "Тип") {
-    $query ="SELECT `type`,`namepr`,`gen`,`cost250`,`cost350`,`cost450`, `stat` 
-	FROM `catalog` ORDER BY `type`";
- 
-$result = mysqli_query($mysql, $query); 
-if($result)
-{
-    $rows = mysqli_num_rows($result); 
-     
-    echo "<table><tr><th>Тип продукта</th><th>Имя продукта</th><th>Производитель</th><th>Цена(250мл)</th><th>Цена(350мл)</th><th>Цена(450мл)</th><th>Средняя оценка</th></tr>";
-    for ($i = 0 ; $i < $rows ; ++$i)
-    {
-        $row = mysqli_fetch_row($result);
-        echo "<tr>";
-            for ($j = 0 ; $j < 7 ; ++$j) echo '<td><a href="card.php" style="width: 100%; left: 0px; height: 1.5em;">'.$row[$j].'</a></td>';
-        echo "</tr>";
-    }
-    echo "</table>";
     mysqli_free_result($result);
-}
 mysqli_close($mysql);
-} elseif ($sort == "Производитель") {
-	    $query ="SELECT `type`,`namepr`,`gen`,`cost250`,`cost350`,`cost450`, `stat` 
-	FROM `catalog` ORDER BY `gen`";
- 
-$result = mysqli_query($mysql, $query); 
-if($result)
-{
-    $rows = mysqli_num_rows($result); 
-     
-    echo "<table><tr><th>Тип продукта</th><th>Имя продукта</th><th>Производитель</th><th>Цена(250мл)</th><th>Цена(350мл)</th><th>Цена(450мл)</th><th>Средняя оценка</th></tr>";
-    for ($i = 0 ; $i < $rows ; ++$i)
-    {
-        $row = mysqli_fetch_row($result);
-        echo "<tr>";
-            for ($j = 0 ; $j < 7 ; ++$j) echo '<td><a href="card.php" style="width: 100%; left: 0px; height: 1.5em;">'.$row[$j].'</a></td>';
-        echo "</tr>";
-    }
-    echo "</table>";
-    mysqli_free_result($result);
-}
-mysqli_close($mysql);
-} elseif ($sort == "Цена") {
-	$query ="SELECT `type`,`namepr`,`gen`,`cost250`,`cost350`,`cost450`, `stat` 
-	FROM `catalog` ORDER BY `cost250`";
- 
-$result = mysqli_query($mysql, $query); 
-if($result)
-{
-    $rows = mysqli_num_rows($result); 
-     
-    echo "<table><tr><th>Тип продукта</th><th>Имя продукта</th><th>Производитель</th><th>Цена(250мл)</th><th>Цена(350мл)</th><th>Цена(450мл)</th><th>Средняя оценка</th></tr>";
-    for ($i = 0 ; $i < $rows ; ++$i)
-    {
-        $row = mysqli_fetch_row($result);
-        echo "<tr>";
-            for ($j = 0 ; $j < 7 ; ++$j) echo '<td><a href="card.php" style="width: 100%; left: 0px; height: 1.5em;">'.$row[$j].'</a></td>';
-        echo "</tr>";
-    }
-    echo "</table>";
-    mysqli_free_result($result);
-}
-mysqli_close($mysql);
-} else {
-	$query ="SELECT `type`,`namepr`,`gen`,`cost250`,`cost350`,`cost450`, `stat` 
-	FROM `catalog` ORDER BY `stat`";
- 
-$result = mysqli_query($mysql, $query); 
-if($result)
-{
-    $rows = mysqli_num_rows($result); 
-     
-    echo "<table><tr><th>Тип продукта</th><th>Имя продукта</th><th>Производитель</th><th>Цена(250мл)</th><th>Цена(350мл)</th><th>Цена(450мл)</th><th>Средняя оценка</th></tr>";
-    for ($i = 0 ; $i < $rows ; ++$i)
-    {
-        $row = mysqli_fetch_row($result);
-        echo "<tr>";
-            for ($j = 0 ; $j < 7 ; ++$j) echo '<td><a href="card.php" style="width: 100%; left: 0px; height: 1.5em;">'.$row[$j].'</a></td>';
-        echo "</tr>";
-    }
-    echo "</table>";
-    mysqli_free_result($result);
-}
-mysqli_close($mysql);
-}
 ?>
-		
   </div>
   
   <div class="footer" align=center>
   
   <?php 
-
     error_reporting(0);
    
     $mysql = new mysqli('localhost','root','','registersite');
 	
-	$name=$_COOKIE['user'];
-	$stmt = $mysql->prepare("SELECT `admin` FROM `users` WHERE `name`= ? "); 
-            $stmt->bind_param('i', $name); 
-            $stmt->execute(); 
-            $stmt->bind_result($admin);
-            $stmt->fetch();
+	$admin=$_COOKIE['admin'];
 	if(!empty($admin)):
     ?>
     <p><a href="addcatalog.php" style="color:#81BEF7;">Добавление продукта</a></p>
@@ -156,4 +96,5 @@ mysqli_close($mysql);
 	   $mysql->close();?> 
   </div>
  </body>
+ <?php endif; ?>
 </html>

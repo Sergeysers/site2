@@ -22,5 +22,5 @@
  VALUES('$type','$namepr','$descr','$gen','$cost250','$cost350','$cost450','$photo')"); 
  
  $mysql->close();
- header('Location:main.php');
+ header('Location:cong.php');
 ?>

@@ -10,11 +10,14 @@
  $user = $result->fetch_assoc();
  error_reporting(0);
  if(count($user) == 0) {
-	 echo "На данную почту не зарегистрирован аккаунт.";
+	 echo "Неверно введёная почта и/или пароль!";
+	 echo '<p><a href="main.php">'."Вернуться на главную страницу".'</a></p>';
 	 exit();
  }
  
  setcookie('user', $user['name'], time() + 259200, "/");
+ setcookie('email', $user['email'], time() + 259200, "/");
+ setcookie('admin', $user['admin'], time() + 259200, "/");
 
  $mysql->close();
  header('Location:main.php');
