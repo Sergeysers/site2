@@ -15,7 +15,16 @@
    if($_COOKIE['user'] == ''):
      ?>
    <p><a href="aut.php" style="color:#81BEF7;">Войдите</a> или <a href="reg.php" style="color:#81BEF7;">зарегистрируйтесь</a>, чтобы получить доступ к заказам, каталогу, отзывам и скидкам!</p>
-   <p align=center> <a href="main.php">Вернуться на главную страницу</a></p>
+   </div>
+  <div class="menu">
+   <p align=center> <a href="main.php" style="padding: 10px 5% 10px;">Вернуться на главную страницу</a></p>
+  </div>
+   <div align=center>
+   <p style="color:white;"><a href="aut.php" style="color:#81BEF7;">Войдите</a>, чтобы получить доступ к данной странице!</p>
+   </div>
+   <div class="footer" align=center>
+   <p> © Разработано на ИУ4-11Б Еловским Никитой </p>
+   </div>
    <?php else: ?>
     <p> Приветствуем Вас, <?=$_COOKIE['user']?>. Чтобы выйти, нажмите <a href="exit.php">здесь</a>.</p>
   </div>

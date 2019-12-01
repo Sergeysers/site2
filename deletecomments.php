@@ -2,7 +2,7 @@
 <html>
  <head>
   <meta charset="utf-8">
-  <title> Отзывы </title>
+  <title> Удаление комментариев </title>
   <link rel="stylesheet" href="style.css">
  </head>
  <body>
@@ -29,41 +29,32 @@
     <p> Приветствуем Вас, <?=$_COOKIE['user']?>. Чтобы выйти, нажмите <a href="exit.php">здесь</a>.</p>
   </div>
   <div class="menu">
-   <p align=center> <a href="contact.php" style="padding: 10px 5% 10px 0%;">Контакты/Адрес</a>
-                    <a href="aboutus.php" style="padding: 10px 5% 10px;">О нас</a> 
-	                <a href="main.php" style="padding: 10px 5% 10px;">Главная</a>
-	                <a href="catalog.php" style="padding: 10px 5% 10px;">Каталог</a>
-	                <a href="shop.php" style="padding: 10px 10% 10px 5%;">Купить</a>
-					<b style="color:#BDBDBD;">Отзывы</b></p>
+   <p align=center> <a href="main.php" style="padding: 10px 5% 10px;">Вернуться на главную страницу</a></p>
   </div>
-  <div class="main">
+  <div class="main" align=center>
   <?php
-  $com = filter_var(trim($_POST['com']),
-  FILTER_SANITIZE_STRING);
-  $name=$_COOKIE['user'];
-  $email=$_COOKIE['email'];
-  
   $mysql = new mysqli('localhost','root','','registersite');
-  $query ="SELECT `name`,`com` FROM `comments`";
+  $query ="SELECT * FROM `comments`";
  
   $result = mysqli_query($mysql, $query); 
   if($result)
    $rows = "";
+		echo "<table><tr><th>ID комментария</th><th>Имя пользователя</th><th>E-mail пользователя</th><th>Комментарий</th></tr>";
     while($rows = $result->fetch_assoc()){
-		echo "<table>";
 		echo "<tr>";
-		echo "<td><b>".$rows["name"].":</b></td>";
+		echo "<td>".$rows["id"]."</td>";
+		echo "<td>".$rows["name"]."</td>";
+		echo "<td>".$rows["email"]."</td>";
         echo "<td>".$rows["com"]."</td>";
-		echo "</tr>"; 
-        echo "</table>";				
+		echo "</tr>"; 			
 	}
+	    echo "</table>";
 
     mysqli_free_result($result);
-mysqli_close($mysql);
+    mysqli_close($mysql);
 ?>
-   <form action="commentsform.php" method="POST"  align=center>
-   <label for="com">Ваш отзыв:</label>
-   <textarea name="com" cols="60" rows="5"  required></textarea>
+   <form action="deletecommentsform.php" method="POST">
+    <p>Введите ID комментария, который вы хотите удалить: <input type="text" name="iddel" required></p>
    <input type="submit" value="Подтвердить">
    </form>
   </div>
@@ -77,7 +68,6 @@ mysqli_close($mysql);
 	$admin=$_COOKIE['admin'];
 	if(!empty($admin)):
     ?>
-    <p><a href="deletecomments.php" style="color:#81BEF7;">Удаление комментариев</a></p>
 	<p><a href="ban.php" style="color:#81BEF7;">Блокировка пользователей</a></p>
    <?php else: ?>
    <p> © Разработано на ИУ4-11Б Еловским Никитой </p>

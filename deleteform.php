@@ -12,4 +12,5 @@
   setcookie('user', $user['name'], time() - 259200, "/");
   setcookie('email', $user['email'], time() - 259200, "/");
   setcookie('admin', $user['admin'], time() - 259200, "/");
+  setcookie('id', $user['id'], time() - 259200, "/");
 ?>

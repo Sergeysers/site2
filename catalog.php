@@ -11,12 +11,21 @@
    <h1><em> Cofeйня </em></h1>
   </div>
   <div class="register">
-   <?php 
+    <?php 
    error_reporting(0);
    if($_COOKIE['user'] == ''):
      ?>
    <p><a href="aut.php" style="color:#81BEF7;">Войдите</a> или <a href="reg.php" style="color:#81BEF7;">зарегистрируйтесь</a>, чтобы получить доступ к заказам, каталогу, отзывам и скидкам!</p>
-   <p align=center> <a href="main.php">Вернуться на главную страницу</a></p>
+   </div>
+  <div class="menu">
+   <p align=center> <a href="main.php" style="padding: 10px 5% 10px;">Вернуться на главную страницу</a></p>
+  </div>
+   <div align=center>
+   <p style="color:white;"><a href="aut.php" style="color:#81BEF7;">Войдите</a>, чтобы получить доступ к данной странице!</p>
+   </div>
+   <div class="footer" align=center>
+   <p> © Разработано на ИУ4-11Б Еловским Никитой </p>
+   </div>
    <?php else: ?>
     <p> Приветствуем Вас, <?=$_COOKIE['user']?>. Чтобы выйти, нажмите <a href="exit.php">здесь</a>.</p>
   </div>
@@ -29,6 +38,15 @@
 				    <a href="comments.php" style="padding: 10px 5% 10px;">Отзывы</a></p>
   </div>
   <div class="coffee">
+   <form action="" method="POST">
+    <select name="sort" size="1">
+    <p>Сортировка:
+	 <option value="Тип">Тип</option>
+	 <option value="Цена">Цена</option>
+	 <option value="Производитель">Производитель</option>
+	 <option value="Алфавит">Алфавит</option>
+	</select></p>
+	<input type="submit" value="Подвтвердить">
     <?php
   $type = filter_var(trim($_POST['type']),
   FILTER_SANITIZE_STRING);
@@ -46,11 +64,19 @@
   FILTER_SANITIZE_STRING);
   $photo = filter_var(trim($_POST['photo']),
   FILTER_SANITIZE_STRING);
-  $stat = filter_var(trim($_POST['sort']),
+  $sort = filter_var(trim($_POST['sort']),
   FILTER_SANITIZE_STRING);
   
 $mysql = new mysqli('localhost','root','','registersite');
-$query ="SELECT `photo`,`namepr`,`type`,`gen`,`descr`,`cost250`,`cost350`,`cost450` FROM `catalog`";
+
+if ($sort == "Тип") {
+$query ="SELECT `photo`,`namepr`,`type`,`gen`,`descr`,`cost250`,`cost350`,`cost450` FROM `catalog` ORDER BY `type` ";}
+elseif ($sort == "Цена") {
+$query ="SELECT `photo`,`namepr`,`type`,`gen`,`descr`,`cost250`,`cost350`,`cost450` FROM `catalog` ORDER BY `cost250` ";}
+elseif ($sort == "Производитель") {
+$query ="SELECT `photo`,`namepr`,`type`,`gen`,`descr`,`cost250`,`cost350`,`cost450` FROM `catalog` ORDER BY `descr` ";}
+elseif ($sort == "Алфавит") {
+$query ="SELECT `photo`,`namepr`,`type`,`gen`,`descr`,`cost250`,`cost350`,`cost450` FROM `catalog` ORDER BY `namepr` ";}
  
 $result = mysqli_query($mysql, $query); 
 if($result)

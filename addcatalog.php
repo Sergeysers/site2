@@ -19,8 +19,8 @@
       <option value="Прочее">Прочее</option>n>
      </select></p>
     <p>Наименование продукта: <input type="text" name="namepr" required></p>
-<label for="descr">Ваш комментарий:</label>
-<textarea name="descr" cols="40" rows="5"></textarea>
+     <label for="descr">Описание:</label>
+     <textarea name="descr" cols="40" rows="5"></textarea>
     <p>Производитель: 
 	 <select name="gen" size="1">
       <option value="Кофейня">Кофейня</option>
@@ -33,20 +33,14 @@
     <input type="submit" value="Подтвердить">
    </form> 
   </div>
- <div class="footer" align=center>
+  <div class="footer" align=center>
   
   <?php 
-
     error_reporting(0);
    
     $mysql = new mysqli('localhost','root','','registersite');
 	
-	$name=$_COOKIE['user'];
-	$stmt = $mysql->prepare("SELECT `admin` FROM `users` WHERE `name`= ? "); 
-            $stmt->bind_param('i', $name); 
-            $stmt->execute(); 
-            $stmt->bind_result($admin);
-            $stmt->fetch();
+	$admin=$_COOKIE['admin'];
 	if(!empty($admin)):
     ?>
     <p><a href="deletecatalog.php" style="color:#81BEF7;">Удаление продукта</a></p>
