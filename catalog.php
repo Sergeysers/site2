@@ -77,6 +77,8 @@ elseif ($sort == "Производитель") {
 $query ="SELECT `photo`,`namepr`,`type`,`gen`,`descr`,`cost250`,`cost350`,`cost450` FROM `catalog` ORDER BY `descr` ";}
 elseif ($sort == "Алфавит") {
 $query ="SELECT `photo`,`namepr`,`type`,`gen`,`descr`,`cost250`,`cost350`,`cost450` FROM `catalog` ORDER BY `namepr` ";}
+elseif ($sort == "") {
+$query ="SELECT `photo`,`namepr`,`type`,`gen`,`descr`,`cost250`,`cost350`,`cost450` FROM `catalog` ";}
  
 $result = mysqli_query($mysql, $query); 
 if($result)
