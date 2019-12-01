@@ -3,7 +3,7 @@
  FILTER_SANITIZE_STRING);
  $password = filter_var(trim($_POST['password']),
  FILTER_SANITIZE_STRING);
- $date = date("Y:m:d");
+ $date = date("Y-m-d");
  
  $mysql = new mysqli('localhost','root','','registersite');
  
@@ -23,7 +23,7 @@
   if($result2)
    $rows ="";
     while($rows = $result2->fetch_assoc()){ 
- if((!empty($rows["ban"])) AND $rows["ban"]<$date) {
+ if((!empty($rows["ban"])) AND $rows["ban"]>$date) {
 	 echo "Вы заблокированы до ".$rows["ban"].".Причина: ".$rows["reason"];
 	 echo '<p><a href="main.php">'."Вернуться на главную страницу".'</a></p>';
 	 exit();
