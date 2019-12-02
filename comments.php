@@ -37,6 +37,24 @@
 					<b style="color:#BDBDBD;">Отзывы</b></p>
   </div>
   <div class="main">
+    <?php
+  $email=$_COOKIE['email'];
+  $user=$_COOKIE['user'];  
+  error_reporting(0);
+      $mysql2 = new mysqli('localhost','root','','registersite');
+  $query ="SELECT `ban`,`reason` FROM `users` WHERE `email`='$email' AND `name`='$user'";
+ 
+  $result2 = mysqli_query($mysql2, $query); 
+  if($result2)
+   $rows ="";
+    while($rows = $result2->fetch_assoc()){ 
+ if((!empty($rows["ban"])) AND $rows["ban"]>$date) {
+	 echo "Вы заблокированы до ".$rows["ban"].".Причина: ".$rows["reason"];
+	 echo '<p><a href="main.php">'."Вернуться на главную страницу".'</a></p>';
+	 exit();
+   }
+  }
+  ?>
   <?php
   $com = filter_var(trim($_POST['com']),
   FILTER_SANITIZE_STRING);

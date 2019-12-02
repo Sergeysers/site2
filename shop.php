@@ -10,7 +10,7 @@
    <h1><em> Cofeйня </em></h1>
   </div>
   <div class="register">
-    <?php 
+	<?php 
    error_reporting(0);
    if($_COOKIE['user'] == ''):
      ?>
@@ -37,6 +37,24 @@
 					<a href="comments.php" style="padding: 10px 5% 10px 10%;">Отзывы</a></p>
   </div>
   <div class="main" style="text-align:center">
+    <?php
+  $email=$_COOKIE['email'];
+  $user=$_COOKIE['user'];  
+  error_reporting(0);
+      $mysql2 = new mysqli('localhost','root','','registersite');
+  $query ="SELECT `ban`,`reason` FROM `users` WHERE `email`='$email' AND `name`='$user'";
+ 
+  $result2 = mysqli_query($mysql2, $query); 
+  if($result2)
+   $rows ="";
+    while($rows = $result2->fetch_assoc()){ 
+ if((!empty($rows["ban"])) AND $rows["ban"]>$date) {
+	 echo "Вы заблокированы до ".$rows["ban"].".Причина: ".$rows["reason"];
+	 echo '<p><a href="main.php">'."Вернуться на главную страницу".'</a></p>';
+	 exit();
+   }
+  }
+  ?>
    <p> При заказе с сайта все виды кофе стоят 70/110/150 рублей за 250/350/450 мл соответственно! </p>
    <form action="shopform.php" method="POST">
     <p>Напиток: 
