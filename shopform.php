@@ -9,11 +9,12 @@
   FILTER_SANITIZE_STRING);
   $email = $_COOKIE['email'];
   $name = $_COOKIE['user'];
+  $dateorder = date("Y-m-d");
 
   $mysql = new mysqli('localhost','root','','registersite');
  
-  $mysql->query("INSERT INTO `shop` (`drink`,`size`,`count`,`time`,`email`,`name`)
-  VALUES('$drink','$size','$count','$time','$email','$name')"); 
+  $mysql->query("INSERT INTO `shop` (`drink`,`size`,`count`,`time`,`dateorder`,`email`,`name`)
+  VALUES('$drink','$size','$count','$time','$dateorder','$email','$name')"); 
  
   $mysql->close();
   header('Location:cong.php');

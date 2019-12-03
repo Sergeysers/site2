@@ -1,16 +1,11 @@
 <?php
-  $name=$_COOKIE['user'];
-  $email=$_COOKIE['email'];
+  $iddelacc = filter_var(trim($_POST['iddelacc']),
+  FILTER_SANITIZE_STRING);
   
   $mysql = new mysqli('localhost','root','','registersite');
  
-  $mysql->query("DELETE FROM `users` WHERE `name`='$name' AND `email`='$email'");
+  $mysql->query("DELETE FROM `users` WHERE `id`='$iddelacc'");
 
   $mysql->close();
   header('Location:cong.php');
-   
-  setcookie('user', $user['name'], time() - 259200, "/");
-  setcookie('email', $user['email'], time() - 259200, "/");
-  setcookie('admin', $user['admin'], time() - 259200, "/");
-  setcookie('id', $user['id'], time() - 259200, "/");
 ?>

@@ -97,6 +97,7 @@ mysqli_close($mysql);
     ?>
     <p><a href="deletecomments.php" style="color:#81BEF7;">Удаление комментариев</a></p>
 	<p><a href="ban.php" style="color:#81BEF7;">Блокировка пользователей</a></p>
+	<p><a href="delete.php" style="color:#81BEF7;"> Удаление пользователей</a></p>
    <?php else: ?>
    <p> © Разработано на ИУ4-11Б Еловским Никитой </p>
       <?php endif; 

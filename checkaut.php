@@ -12,10 +12,11 @@
  error_reporting(0);
  if(count($user) == 0) {
 	 echo "Неверно введёная почта и/или пароль!";
-	 echo '<p><a href="main.php">'."Вернуться на главную страницу".'</a></p>';
+	 echo '<p><a href="aut.php">'."Попробуйте снова".'</a></p>';
 	 exit();
  } 
 
+  
   $mysql2 = new mysqli('localhost','root','','registersite');
   $query ="SELECT `ban`,`reason` FROM `users` WHERE `email`='$email' AND `password`='$password'";
  

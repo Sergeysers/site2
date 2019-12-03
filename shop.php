@@ -59,14 +59,24 @@
    <form action="shopform.php" method="POST">
     <p>Напиток: 
      <select name="drink" size="1">
-      <option value="Капучино">Капучино</option>
-      <option value="Латте">Латте</option>
-      <option value="Флэт уайт">Флэт уайт</option>
-      <option value="Эспрессо">Эспрессо</option>
-      <option value="Американо">Американо</option>
-      <option value="Латте Макиато">Латте Макиато</option>
-      <option value="Макиато">Макиато</option>
-      <option value="Моккачино">Моккачино</option>
+	 <?php
+$mysql = new mysqli('localhost','root','','registersite');
+
+
+$query ="SELECT `namepr` FROM `catalog`";
+
+$result = mysqli_query($mysql, $query); 
+if($result)
+ $rows = "";
+    while($rows = $result->fetch_assoc()){
+
+		echo "<option value=".$rows["namepr"].">".$rows["namepr"]."</option>";
+				
+	}
+
+    mysqli_free_result($result);
+mysqli_close($mysql);
+?>
      </select></p>
     <p>Размер стаканчика: 
      <select name="size" size="1">
