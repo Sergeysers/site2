@@ -31,10 +31,10 @@
   <div class="menu">
    <p align=center> <a href="contact.php" style="padding: 10px 5% 10px;">Контакты/Адрес</a>
                     <a href="aboutus.php" style="padding: 10px 5% 10px;">О нас</a> 
-	                <a href="main.php" style="padding: 10px 10% 10px 5%;">Главная</a>
+	                <a href="main.php" style="padding: 10px 5% 10px 5%;">Главная</a>
 	                <a href="catalog.php" style="padding: 10px 10% 10px 5%;">Каталог</a>
 	                <b style="color:#BDBDBD;">Купить</b>
-					<a href="comments.php" style="padding: 10px 5% 10px 10%;">Отзывы</a></p>
+					<a href="comments.php" style="padding: 10px 5% 10px 10%;">Комментарии/Отзывы</a></p>
   </div>
   <div class="main" style="text-align:center">
     <?php

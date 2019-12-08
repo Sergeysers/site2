@@ -2,7 +2,7 @@
 <html>
  <head>
   <meta charset="utf-8">
-  <title> Отзывы </title>
+  <title> Комментарии/Отзывы </title>
   <link rel="stylesheet" href="style.css">
  </head>
  <body>
@@ -34,7 +34,7 @@
 	                <a href="main.php" style="padding: 10px 5% 10px;">Главная</a>
 	                <a href="catalog.php" style="padding: 10px 5% 10px;">Каталог</a>
 	                <a href="shop.php" style="padding: 10px 10% 10px 5%;">Купить</a>
-					<b style="color:#BDBDBD;">Отзывы</b></p>
+					<b style="color:#BDBDBD;">Комментарии/Отзывы</b></p>
   </div>
   <div class="main">
     <?php

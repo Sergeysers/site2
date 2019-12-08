@@ -12,12 +12,7 @@
    <p align=center> <a href="main.php" style="padding: 10px 5% 10px;">Вернуться на главную страницу</a></p>
   </div>
   <div class="main" style="text-align:center">
-   <form action="addcatalogform.php" method="POST">
-    <p>Тип продукта: 
-     <select name="type" size="1">
-      <option value="Напитки">Напитки</option>
-      <option value="Прочее">Прочее</option>n>
-     </select></p>
+   <form action="addcatalogform.php" method="POST" enctype="multipart/form-data">
     <p>Наименование продукта: <input type="text" name="namepr" required></p>
      <label for="descr">Описание:</label>
      <textarea name="descr" cols="40" rows="5"></textarea>

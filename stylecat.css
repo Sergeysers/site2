@@ -7,19 +7,19 @@
    .header {
 	    font-size: 160%;
 	    color: #F8ECE0;
-            width: 20%;
+        width: 20%;
 	    height: 17%;
-            margin-left: 10%;
-            margin-right: 40%;
+        margin-left: 10%;
+        margin-right: 40%;
 	    display: inline-block;
            }
    .register {
 	      background: #F6E3CE;
-              color: #8A4B08;
+          color: #8A4B08;
 	      width: 20%;
 	      height: 17%;
-              margin-left: 0%;
-              margin-right: 9%;
+          margin-left: 0%;
+          margin-right: 9%;
 	      display: inline-block;
              }
    .menu {
@@ -27,9 +27,9 @@
 	  color: white;
 	  width: 80%;
 	  height: 8%;
-          margin-left: 10%;
-          margin-right: 10%;
-          margin-bottom: 1%;
+      margin-left: 10%;
+      margin-right: 10%;
+      margin-bottom: 1%;
 	  display: inline-block;
          }
    .coffee {
@@ -45,11 +45,11 @@
             }
    .footer {
 	    background: #F6E3CE;
-            color: #D8D8D8;
+        color: #D8D8D8;
 	    width: 80%;
 	    height: 10%;
-            margin-left: 10%;
-            margin-right: 10%;
+        margin-left: 10%;
+        margin-right: 10%;
 	    display: inline;
            }
    a:link { 
@@ -69,4 +69,7 @@
           {
            text-decoration: underline; 
            color: black; 
+          }
+   .table {
+	       width: 90%;
           }

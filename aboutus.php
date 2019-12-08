@@ -25,7 +25,7 @@
 	                <a href="main.php" style="padding: 10px 5% 10px 10%;">Главная</a> 
 	                <a href="catalog.php" style="padding: 10px 5% 10px 5%;">Каталог</a>
 	                <a href="shop.php" style="padding: 10px 5% 10px;">Купить</a>
-			     	<a href="comments.php" style="padding: 10px 5% 10px;">Отзывы</a></p></p>
+			     	<a href="comments.php" style="padding: 10px 5% 10px;">Комментарии/Отзывы</a></p></p>
   </div>
   <div class="main" align=center>
                     <p> Cofeйня – это мини-кофейня формата coffee-to-go, сочетающая в себе великолепное качество кофе и невероятно низкую цену.

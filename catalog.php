@@ -35,7 +35,7 @@
 	                <a href="main.php" style="padding: 10px 10% 10px 5%;">Главная</a>
 	                <b style="color:#BDBDBD;">Каталог</b>
 	                <a href="shop.php" style="padding: 10px 5% 10px 10%;">Купить</a>
-				    <a href="comments.php" style="padding: 10px 5% 10px;">Отзывы</a></p>
+				    <a href="comments.php" style="padding: 10px 5% 10px;">Комментарии/Отзывы</a></p>
   </div>
   <div class="coffee">
     <?php
@@ -59,57 +59,35 @@
    <form action="" method="POST">
     <select name="sort" size="1">
     <p>Сортировка:
-	 <option value="Тип">Тип</option>
 	 <option value="Цена">Цена</option>
 	 <option value="Производитель">Производитель</option>
 	 <option value="Алфавит">Алфавит</option>
 	</select></p>
 	<input type="submit" value="Подвтвердить">
     <?php
-  $type = filter_var(trim($_POST['type']),
-  FILTER_SANITIZE_STRING);
-  $namepr = filter_var(trim($_POST['namepr']),
-  FILTER_SANITIZE_STRING);
-  $descr = filter_var(trim($_POST['descr']),
-  FILTER_SANITIZE_STRING);
-  $gen = filter_var(trim($_POST['gen']),
-  FILTER_SANITIZE_STRING);
-  $cost250 = filter_var(trim($_POST['cost250']),
-  FILTER_SANITIZE_STRING);
-  $cost350 = filter_var(trim($_POST['cost350']),
-  FILTER_SANITIZE_STRING);
-  $cost450 = filter_var(trim($_POST['cost450']),
-  FILTER_SANITIZE_STRING);
-  $photo = filter_var(trim($_POST['photo']),
-  FILTER_SANITIZE_STRING);
-  $sort = filter_var(trim($_POST['sort']),
-  FILTER_SANITIZE_STRING);
+
   
 $mysql = new mysqli('localhost','root','','registersite');
 
-if ($sort == "Тип") {
-$query ="SELECT `photo`,`namepr`,`type`,`gen`,`descr`,`cost250`,`cost350`,`cost450` FROM `catalog` ORDER BY `type` ";}
-elseif ($sort == "Цена") {
-$query ="SELECT `photo`,`namepr`,`type`,`gen`,`descr`,`cost250`,`cost350`,`cost450` FROM `catalog` ORDER BY `cost250` ";}
+if ($sort == "Цена") {
+$query ="SELECT `photo`,`namepr`,`gen`,`descr`,`cost250`,`cost350`,`cost450` FROM `catalog` ORDER BY `cost250` ";}
 elseif ($sort == "Производитель") {
-$query ="SELECT `photo`,`namepr`,`type`,`gen`,`descr`,`cost250`,`cost350`,`cost450` FROM `catalog` ORDER BY `descr` ";}
+$query ="SELECT `photo`,`namepr`,`gen`,`descr`,`cost250`,`cost350`,`cost450` FROM `catalog` ORDER BY `descr` ";}
 elseif ($sort == "Алфавит") {
-$query ="SELECT `photo`,`namepr`,`type`,`gen`,`descr`,`cost250`,`cost350`,`cost450` FROM `catalog` ORDER BY `namepr` ";}
+$query ="SELECT `photo`,`namepr`,`gen`,`descr`,`cost250`,`cost350`,`cost450` FROM `catalog` ORDER BY `namepr` ";}
 elseif ($sort == "") {
-$query ="SELECT `photo`,`namepr`,`type`,`gen`,`descr`,`cost250`,`cost350`,`cost450` FROM `catalog` ";}
+$query ="SELECT `photo`,`namepr`,`gen`,`descr`,`cost250`,`cost350`,`cost450` FROM `catalog` ";}
  
 $result = mysqli_query($mysql, $query); 
 if($result)
  $rows = "";
     while($rows = $result->fetch_assoc()){
-		echo "<link rel='stylesheet' href='table.css'>";
-		echo "<table>";
-		echo "<tr><td rowspan=6>";
+		echo '<table class="table">';
+		echo "<tr><td rowspan=5>";
 		echo "<img src=\"data:image/png;base64,".base64_encode($rows["photo"])."\" />";
 		echo "</td>";
 		echo "<td><b>".$rows["namepr"]."</b></td>";
 		echo "</tr>";
-        echo "<tr><td colspan=3>".$rows["type"]."</td></tr>";
         echo "<tr><td colspan=3> Производство: ".$rows["gen"]."</td></tr>";  
         echo "<tr><td colspan=3>".$rows["descr"]."</td></tr>"; 
  		echo "<tr>";
@@ -117,7 +95,8 @@ if($result)
         echo "<td> Цена (350мл): ".$rows["cost350"]."</td>";
         echo "<td> Цена (450мл): ".$rows["cost450"]."</td>";
 		echo "</tr>"; 
-        echo "</table>";				
+		echo '<hr align="center" width="30%" size="2" color="brown" />';
+        echo "</table>";	
 	}
 
     mysqli_free_result($result);
