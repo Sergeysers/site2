@@ -33,7 +33,7 @@
                     <a href="aboutus.php" style="padding: 10px 5% 10px;">О нас</a> 
 	                <a href="main.php" style="padding: 10px 5% 10px;">Главная</a>
 	                <a href="catalog.php" style="padding: 10px 5% 10px;">Каталог</a>
-	                <a href="shop.php" style="padding: 10px 10% 10px 5%;">Купить</a>
+	                <a href="shop.php" style="padding: 10px 5% 10px 5%;">Купить</a></br>
 					<b style="color:#BDBDBD;">Комментарии/Отзывы</b></p>
   </div>
   <div class="main">

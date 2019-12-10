@@ -13,7 +13,7 @@
   </div>
   <div class="main" style="text-align:center">
    <p>Поздравляем с успешным заверщением операции!</p>
-   <p><img src="boom.jpg" alt="Взрыв" width="400" height="400"></p>
+   <p><img src="boom.jpg" alt="Взрыв" width="300" height="300"></p>
   </div>
   <div class="footer">
    <p align=center> © Разработано на ИУ4-11Б Еловским Никитой </p>

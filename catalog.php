@@ -83,8 +83,14 @@ if($result)
  $rows = "";
     while($rows = $result->fetch_assoc()){
 		echo '<table class="table">';
-		echo "<tr><td rowspan=5>";
-		echo "<img src=\"data:image/png;base64,".base64_encode($rows["photo"])."\" />";
+		echo '<tr><td rowspan=5>';
+		?>
+		<div class='photo'>
+		<?php
+		echo '<img src=\'data:image/jpg;base64,'.base64_encode($rows['photo']).'\' />';
+		?>
+		</div>
+		<?php
 		echo "</td>";
 		echo "<td><b>".$rows["namepr"]."</b></td>";
 		echo "</tr>";
@@ -115,6 +121,7 @@ mysqli_close($mysql);
 	if(!empty($admin)):
     ?>
     <p><a href="addcatalog.php" style="color:#81BEF7;">Добавление продукта</a></p>
+	<p><a href="deletecatalog.php" style="color:#81BEF7;">Удаление продукта</a></p>
    <?php else: ?>
    <p> © Разработано на ИУ4-11Б Еловским Никитой </p>
       <?php endif; 
